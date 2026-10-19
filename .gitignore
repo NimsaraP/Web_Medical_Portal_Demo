@@ -34,3 +34,18 @@ build/
 
 out/
 *.class
+
+### Environment & Secrets ###
+.env
+*.env
+
+### Data files (generated at runtime) ###
+*.txt
+!requirements.txt
+
+### Uploaded files ###
+uploads/
+
+### OS files ###
+.DS_Store
+Thumbs.db

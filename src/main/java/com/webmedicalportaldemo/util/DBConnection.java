@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
-    // Using Port 3306 to connect with SQL Server
-    // User and Password for SQL Connection created when executing server
+    // Database connection configuration
+    // Set environment variables DB_USERNAME and DB_PASSWORD for production use
     private static final String URL = "jdbc:mysql://localhost:3306/webmedicalportal";
-    private static final String USER = "root";
-    private static final String PASSWORD = "admin123";
+    private static final String USER = System.getenv("DB_USERNAME") != null ? System.getenv("DB_USERNAME") : "root";
+    private static final String PASSWORD = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "your_password_here";
 
     public static Connection getConnection() {
         try {

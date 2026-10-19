@@ -32,8 +32,8 @@
                                 <%-- Dynamically load drugs from DB. Only show if stock > 0 --%>
                                 <c:forEach var="item" items="${inventoryList}">
                                     <c:if test="${item.stockQuantity > 0}">
-                                        <option value="${item.drugName}\vert{}${item.unitPrice}">
-                                                ${item.drugName} (LKR${item.unitPrice})
+                                        <option value="${item.drugName}|${item.unitPrice}">
+                                                ${item.drugName} (LKR ${item.unitPrice})
                                         </option>
                                     </c:if>
                                 </c:forEach>
@@ -121,16 +121,22 @@
         const medData = medSelect.value.split('|');
         const qty = parseInt(document.getElementById('medQty').value);
 
-        if (!medData[0] || qty < 1) {
+        if (!medSelect.value || medData.length < 2 || isNaN(qty) || qty < 1) {
             alert("Please select a medicine and valid quantity.");
+            return;
+        }
+
+        const unitPrice = parseFloat(medData[1]);
+        if (isNaN(unitPrice) || unitPrice < 0) {
+            alert("Invalid medicine price.");
             return;
         }
 
         const item = {
             name: medData[0],
-            price: parseFloat(medData[1]),
+            price: unitPrice,
             qty: qty,
-            total: parseFloat(medData[1]) * qty
+            total: unitPrice * qty
         };
 
         cart.push(item);
