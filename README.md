@@ -104,8 +104,8 @@ src/main/java/com/webmedicalportaldemo/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/NimsaraP/Web-Medical-Portal.git
-   cd Web-Medical-Portal
+   git clone https://github.com/NimsaraP/Web_Medical_Portal_Demo.git
+   cd Web_Medical_Portal_Demo
    ```
 
 2. **Create the MySQL database**
